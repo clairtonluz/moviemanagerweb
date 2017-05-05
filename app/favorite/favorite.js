@@ -39,6 +39,7 @@ angular.module('moviemanager')
             }
 
             function _onFavorite(favorite) {
+                $scope.clickedId = favorite.id;
                 favoriteService.remove({id: favorite.id}, function () {
                     getFavorites();
                 });

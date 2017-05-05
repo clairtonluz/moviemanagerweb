@@ -16,7 +16,8 @@
                 <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">
                     {{favorite.movie.name}}
-                    <i class="fa fa-heart right" ng-click="onFavorite(favorite)"></i>
+                    <i class="fa fa-heart right" ng-click="onFavorite(favorite)"
+                       ng-class="{'heart-growing': clickedId === favorite.id}"></i>
                 </span>
                     <p>{{favorite.movie.description}}</p>
                 </div>

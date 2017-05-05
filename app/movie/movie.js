@@ -44,13 +44,16 @@ angular.module('moviemanager')
             }
 
             function _onFavorite(movie) {
+                $scope.clickedId = movie.id;
                 if (movie.favorite) {
                     favoriteService.remove({id: movie.favorite.id}, function () {
                         getMovies();
+                        $scope.clickedId = null;
                     });
                 } else {
                     favoriteService.save({movie: movie}, function () {
                         getMovies();
+                        $scope.clickedId = null;
                     })
                 }
             }
