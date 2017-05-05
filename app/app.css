@@ -35,3 +35,28 @@
 .tabs .tab a {
     color: white;
 }
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(.75);
+    }
+    20% {
+        transform: scale(.80);
+    }
+    40% {
+        transform: scale(.85);
+    }
+    60% {
+        transform: scale(.90);
+    }
+    80% {
+        transform: scale(.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.heart-growing {
+    animation: heartbeat 0.2s;
+}

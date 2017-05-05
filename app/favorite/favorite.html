@@ -1,4 +1,28 @@
-<p>This is the partial for view 2.</p>
-<p>
-    Showing of 'interpolate' filter:
-</p>
+<div class="row background-primary">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s6"><a href="#!/movie"><i class="fa fa-home fa-2x"></i></a></li>
+            <li class="tab col s6"><a href="#!/favorite"><i class="fa fa-heart fa-2x"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row" ng-repeat="sublist in list track by $index">
+        <div class="col m6" ng-repeat="favorite in sublist track by favorite.id">
+            <div class="card">
+                <div class="card-image">
+                    <img ng-src="{{favorite.movie.urlImage}}">
+                </div>
+                <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
+                    {{favorite.movie.name}}
+                    <i class="fa fa-heart right" ng-click="onFavorite(favorite)"></i>
+                </span>
+                    <p>{{favorite.movie.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-include src="'../nocontent.html'" ng-if="!list.length"></ng-include>
+</div>
