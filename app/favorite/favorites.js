@@ -3,13 +3,13 @@
 angular.module('moviemanager')
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/favorite', {
-            templateUrl: 'favorite/favorite.html',
-            controller: 'favoriteCtrl'
+        $routeProvider.when('/favorites', {
+            templateUrl: 'favorite/favorites.html',
+            controller: 'favoritesCtrl'
         });
     }])
 
-    .controller('favoriteCtrl', ['$scope', 'favoriteService',
+    .controller('favoritesCtrl', ['$scope', 'favoriteService',
         function ($scope, favoriteService) {
 
             var getFavorites = _getFavorites;

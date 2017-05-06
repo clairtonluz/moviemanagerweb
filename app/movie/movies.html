@@ -1,0 +1,40 @@
+<div class="row background-primary">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s6"><a href="#!/movies" title="Início"><i class="fa fa-home fa-2x"></i></a></li>
+            <li class="tab col s6"><a href="#!/favorites" title="Favoritos"><i class="fa fa-heart fa-2x"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+
+    <form>
+        <div class="input-field">
+            <input id="search" ng-model="search.name" type="search"/>
+            <label for="search"><i class="material-icons">search</i></label>
+        </div>
+    </form>
+    <a href="#!/movie" class="btn-floating btn-large waves-effect waves-light red right" title="Cadastrar filme"><i
+            class="material-icons">add</i></a>
+    <div class="row">
+        <div class="col m8 offset-m2" ng-repeat="movie in movies | filter:search track by movie.id">
+            <div class="card">
+                <div class="card-image">
+                    <img ng-src="{{movie.urlImage}}">
+                </div>
+                <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
+                    {{movie.name}}
+                    <i class="fa right" ng-click="onFavorite(movie)"
+                       ng-class="{'fa-heart': movie.favorite, 'fa-heart-o': !movie.favorite, 'heart-growing': clickedId === movie.id}"></i>
+                    <i class="fa fa-pencil-square-o right" ng-click="onEdit(movie)"></i>
+                </span>
+                    <p>{{movie.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-include src="'../nocontent.html'" ng-if="!movies.length"></ng-include>
+
+</div>

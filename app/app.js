@@ -8,5 +8,5 @@ angular.module('moviemanager', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/movie'});
+  $routeProvider.otherwise({redirectTo: '/movies'});
 }]);

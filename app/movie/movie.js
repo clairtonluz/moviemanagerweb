@@ -7,51 +7,54 @@ angular.module('moviemanager')
         $routeProvider.when('/movie', {
             templateUrl: 'movie/movie.html',
             controller: 'movieCtrl'
+        }).when('/movie/:id', {
+            templateUrl: 'movie/movie.html',
+            controller: 'movieCtrl'
         });
     }])
 
-    .controller('movieCtrl', ['$scope', 'movieService', 'favoriteService',
-        function ($scope, movieService, favoriteService) {
+    .controller('movieCtrl', ['$scope', '$routeParams', '$location', 'movieService',
+        function ($scope, $routeParams, $location, movieService) {
 
-            var getMovies = _getMovies;
-            var getFavorite = _getFavorite;
-            $scope.onFavorite = _onFavorite;
+            $scope.save = _save;
+            $scope.back = _back;
 
-            getMovies();
+            _init();
 
-            function _getMovies() {
-                movieService.query({}, function (movies) {
-                    favoriteService.query({}, function (favorites) {
-                        movies.forEach(function (movie) {
-                            movie.favorite = getFavorite(favorites, movie)
-                        });
-                        $scope.movies = movies;
+            function _init() {
+                if ($routeParams.id) {
+                    movieService.get({id: $routeParams.id}, function (movie) {
+                        $scope.movie = movie;
+                        setTimeout(Materialize.updateTextFields, 100);
                     });
-                });
+                }
+                _generateYears();
             }
 
-            function _onFavorite(movie) {
-                $scope.clickedId = movie.id;
-                if (movie.favorite) {
-                    favoriteService.remove({id: movie.favorite.id}, function () {
-                        getMovies();
-                        $scope.clickedId = null;
-                    });
-                } else {
-                    favoriteService.save({movie: movie}, function () {
-                        getMovies();
-                        $scope.clickedId = null;
-                    })
-                }
+            function _save(movie) {
+                movieService.save(movie, function () {
+                    _back();
+                })
             }
 
-            function _getFavorite(favorites, movie) {
-                for (var i = 0; i < favorites.length; i++) {
-                    if (favorites[i].movie.id === movie.id) {
-                        return favorites[i];
-                    }
-                }
-                return false;
+            function _back() {
+                $location.url('/movies');
             }
+
+            function _generateYears() {
+                var years = [];
+                var currentYear = new Date().getFullYear();
+                for (var year = currentYear; year >= 1900; year--) {
+                    years.push(year);
+                }
+
+                $scope.years = years;
+
+
+                setTimeout(function () {
+                    $('select').material_select();
+                }, 200);
+            }
+
         }]);
 
