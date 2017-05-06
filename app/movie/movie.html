@@ -1,14 +1,21 @@
 <div class="row background-primary">
     <div class="col s12">
         <ul class="tabs">
-            <li class="tab col s6"><a href="#!/movie"><i class="fa fa-home fa-2x"></i></a></li>
-            <li class="tab col s6"><a href="#!/favorite"><i class="fa fa-heart fa-2x"></i></a></li>
+            <li class="tab col s6"><a href="#!/movie" title="Início"><i class="fa fa-home fa-2x"></i></a></li>
+            <li class="tab col s6"><a href="#!/favorite" title="Favoritos"><i class="fa fa-heart fa-2x"></i></a></li>
         </ul>
     </div>
 </div>
 <div class="container">
-    <div class="row" ng-repeat="sublist in list track by $index">
-        <div class="col m6" ng-repeat="movie in sublist track by movie.id">
+
+    <form>
+        <div class="input-field">
+            <input id="search" ng-model="search.name" type="search"/>
+            <label for="search"><i class="material-icons">search</i></label>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col m8 offset-m2" ng-repeat="movie in movies | filter:search track by movie.id">
             <div class="card">
                 <div class="card-image">
                     <img ng-src="{{movie.urlImage}}">
@@ -25,5 +32,5 @@
         </div>
     </div>
 
-    <ng-include src="'../nocontent.html'" ng-if="!list.length"></ng-include>
+    <ng-include src="'../nocontent.html'" ng-if="!movies.length"></ng-include>
 </div>

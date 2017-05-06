@@ -22,23 +22,10 @@ angular.module('moviemanager')
             function _getMovies() {
                 movieService.query({}, function (movies) {
                     favoriteService.query({}, function (favorites) {
-                        var list = [];
-                        var sublist = [];
-
                         movies.forEach(function (movie) {
                             movie.favorite = getFavorite(favorites, movie)
-                            sublist.push(movie);
-                            if (sublist.length === 2) {
-                                list.push(sublist);
-                                sublist = [];
-                            }
                         });
-
-                        if (sublist.length) {
-                            list.push(sublist);
-                        }
-
-                        $scope.list = list;
+                        $scope.movies = movies;
                     });
                 });
             }

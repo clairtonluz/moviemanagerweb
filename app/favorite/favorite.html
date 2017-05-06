@@ -7,8 +7,8 @@
     </div>
 </div>
 <div class="container">
-    <div class="row" ng-repeat="sublist in list track by $index">
-        <div class="col m6" ng-repeat="favorite in sublist track by favorite.id">
+    <div class="row">
+        <div class="col m8 offset-m2" ng-repeat="favorite in favorites | filter:search track by favorite.id">
             <div class="card">
                 <div class="card-image">
                     <img ng-src="{{favorite.movie.urlImage}}">
@@ -25,5 +25,5 @@
         </div>
     </div>
 
-    <ng-include src="'../nocontent.html'" ng-if="!list.length"></ng-include>
+    <ng-include src="'../nocontent.html'" ng-if="!favorites.length"></ng-include>
 </div>

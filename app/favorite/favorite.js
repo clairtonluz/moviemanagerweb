@@ -19,22 +19,7 @@ angular.module('moviemanager')
 
             function _getFavorites() {
                 favoriteService.query({}, function (favorites) {
-                    var list = [];
-                    var sublist = [];
-
-                    favorites.forEach(function (favorite) {
-                        sublist.push(favorite);
-                        if (sublist.length === 2) {
-                            list.push(sublist);
-                            sublist = [];
-                        }
-                    });
-
-                    if (sublist.length) {
-                        list.push(sublist);
-                    }
-
-                    $scope.list = list;
+                    $scope.favorites = favorites;
                 });
             }
 
