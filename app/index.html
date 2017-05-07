@@ -19,7 +19,7 @@
     <div class="nav-wrapper container">
         <a href="#" class="brand-logo">Ki Filmes</a>
         <ul class="right">
-            <li><a href="#!/logout" title="Sair"><i class="material-icons left">input</i></a></li>
+            <li><a href="#!/login" title="Sair"><i class="material-icons right">input</i>{{globals.currentUser.name}}</a></li>
         </ul>
     </div>
 </nav>
@@ -33,6 +33,7 @@
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 
 <script src="app.js"></script>
 
@@ -42,6 +43,8 @@
 <script src="movie/movie.service.js"></script>
 <script src="favorite/favorites.js"></script>
 <script src="favorite/favorite.service.js"></script>
+<script src="auth/authentication.service.js"></script>
+<script src="auth/login.js"></script>
 
 </body>
 </html>

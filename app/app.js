@@ -3,7 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('moviemanager', [
   'ngRoute',
-  'ngResource'
+  'ngResource',
+  'ngCookies'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('moviemanager')
 
     .config(['$routeProvider', function ($routeProvider) {

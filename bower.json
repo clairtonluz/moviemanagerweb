@@ -12,6 +12,7 @@
     "angular-loader": "^1.6.4",
     "materialize": "^0.98.2",
     "font-awesome": "^4.7.0",
-    "angular-animate": "^1.6.4"
+    "angular-animate": "^1.6.4",
+    "angular-cookies": "^1.6.4"
   }
 }
