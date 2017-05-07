@@ -21,3 +21,14 @@ ou
 username:clairton
 password:admin
 ```
+
+Alterando endereço do backend
+-----------------------------
+
+Por padrão o endereço do backend é `http://localhost:8080` para alterar esse endereço você pode editar isso no final do arquivo `app/app.js`
+
+```js
+.constant('config', {
+        api: 'http://localhost:8080/api'
+    });
+```
