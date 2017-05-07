@@ -16,14 +16,16 @@ angular.module('moviemanager')
 
             $scope.login = function () {
                 $scope.dataLoading = true;
-                AuthenticationService.login($scope.username, $scope.password, function (error, user) {
+                AuthenticationService.login($scope.username, $scope.password, function (error) {
                     if (error) {
                         $scope.dataLoading = false;
-                        $scope.error = error;
+                        $scope.errorUsername = "Inválido";
+                        $scope.errorPassword = "Inválido";
                     } else {
                         $location.path('/');
                     }
                 });
             };
+
         }]);
 
