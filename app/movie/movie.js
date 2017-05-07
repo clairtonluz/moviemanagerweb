@@ -16,6 +16,7 @@ angular.module('moviemanager')
         function ($scope, $routeParams, $location, movieService) {
 
             $scope.save = _save;
+            $scope.remove = _remove;
             $scope.back = _back;
 
             _init();
@@ -32,6 +33,12 @@ angular.module('moviemanager')
 
             function _save(movie) {
                 movieService.save(movie, function () {
+                    _back();
+                })
+            }
+
+            function _remove(movie) {
+                movieService.remove({id: movie.id}, function () {
                     _back();
                 })
             }

@@ -27,6 +27,11 @@
                 <button class="btn waves-effect waves-light" type="submit">Salvar
                     <i class="fa fa-save left"></i>
                 </button>
+                <button class="btn waves-effect waves-light red" type="button"
+                        ng-click="remove(movie)" ng-if="movie.id">
+                    Remover
+                    <i class="fa fa-trash left"></i>
+                </button>
                 <button class="btn white black-text waves-effect waves-light" type="button"
                         ng-click="back()">Voltar
                     <i class="fa fa-reply left"></i>
