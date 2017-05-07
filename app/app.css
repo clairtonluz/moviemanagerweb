@@ -69,7 +69,6 @@
 .card {
     position: relative;
     background-color: #f4f4f4;
-// margin: 10px auto;
     height: 100%;
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.7);
 }
