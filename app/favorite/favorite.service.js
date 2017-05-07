@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('moviemanager')
-    .factory('favoriteService', function ($resource) {
-        return $resource('http://localhost:8080/api/favorites/:id', {id: '@id'}, {});
-    });
+    .factory('favoriteService', ['$resource', 'config',
+        function ($resource, config) {
+            return $resource(config.api + '/favorites/:id', {id: '@id'}, {});
+        }]);

@@ -2,8 +2,8 @@
 
 angular.module('moviemanager')
     .factory('AuthenticationService',
-        ['$http', '$cookieStore', '$rootScope', '$timeout',
-            function ($http, $cookieStore, $rootScope) {
+        ['$http', '$cookieStore', '$rootScope', 'config',
+            function ($http, $cookieStore, $rootScope, config) {
                 var service = {};
 
                 service.setCredentials = function (user) {
@@ -23,7 +23,7 @@ angular.module('moviemanager')
 
                     var req = {
                         method: 'GET',
-                        url: 'http://localhost:8080/api/login',
+                        url: config.api + '/login',
                         headers: {
                             'Authorization': 'Basic ' + authdata
                         },

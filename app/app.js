@@ -2,12 +2,14 @@
 
 // Declare app level module which depends on views, and components
 angular.module('moviemanager', [
-  'ngRoute',
-  'ngResource',
-  'ngCookies'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+    'ngRoute',
+    'ngResource',
+    'ngCookies'
+]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+    $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/movies'});
-}]);
+    $routeProvider.otherwise({redirectTo: '/movies'});
+}])
+    .constant('config', {
+        api: 'http://localhost:8080/api'
+    });
